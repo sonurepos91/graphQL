@@ -1,0 +1,48 @@
+# Query And Mutations for ToDoEntity
+type Query {
+    getAllTodos: [TodoDTO]!
+    todo(id: ID!): TodoDTO
+    findByIdAndTextMessage(id: ID!, text:String): TodoDTO
+    getAuthor(firstName:String):AuthorDTO
+}
+type TodoDTO{
+    id:ID
+    text: String
+    completed: Boolean
+}
+type AuthorDTO{
+    id:ID,
+    firstName:String
+    lastName: String
+    books : [BookDTO]
+}
+type BookDTO{
+    id:ID
+    bookName:String
+    authorId:ID
+}
+
+type Mutation {
+    addTodo(text: String!, completed: Boolean!): ID!
+    addTodoReturnTodo(text: String!, completed: Boolean): TodoDTO
+    updateTodo(id: ID!, text: String!, completed: Boolean): TodoDTO
+    deleteTodo(id: ID!): ID!
+    # Query And Mutations for AuthorEntity
+    addAuthor(addInputDetails: AddAuthorInputDTO!):ID!
+}
+
+input AddAuthorInputDTO {
+    id:ID,
+    firstName:String!
+    lastName: String!
+    books : [BookInputDTO]!
+}
+input BookInputDTO{
+    id:ID
+    bookName:String!
+    authorId:ID
+}
+
+
+
+

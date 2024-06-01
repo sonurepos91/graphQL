@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: GraphQL
+  profiles:
+    active: local
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/records
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      pool-name: HikariPool
+      maximum-pool-size: 10
+      auto-commit:  true
+
+  jpa:
+    properties:
+      hibernate:
+        dialect:
+        show_sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 9076
